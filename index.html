@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How? | Coder Bio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* CSS Переменные для легкой кастомизации */
+        :root {
+            --color-bg-primary: #0a0a0a;
+            --color-bg-secondary: #1e1e1e;
+            --color-bg-tertiary: #2a2a2a;
+            --color-text-primary: #e8e8e8; /* Улучшен контраст */
+            --color-text-secondary: #c0c0c0; /* Улучшен контраст */
+            --color-link-primary: #64b5f6;
+            --color-link-hover: #42a5f5;
+            --color-border: rgba(80, 80, 80, 0.5);
+            --color-divider: #616161;
+            --color-tag-bg: rgba(60, 60, 60, 0.7);
+            --color-tag-hover: rgba(80, 80, 80, 0.9);
+            --shadow-primary: rgba(0, 0, 0, 0.7);
+            --shadow-accent: rgba(100, 100, 255, 0.15); /* Более выраженная акцентная тень */
+        }
+
+        body {
+            background-color: var(--color-bg-primary);
+            color: var(--color-text-primary);
+            font-family: 'Courier New', monospace;
+            padding: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        /* Упрощенный фон */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, 
+                        rgba(60, 60, 60, 0.8) 0%, 
+                        var(--color-bg-primary) 100%);
+            z-index: -2;
+        }
+        
+        /* Упрощенная сетка */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .bio-container {
+            border: 1px solid var(--color-border);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 25px var(--shadow-primary),
+                        0 0 15px var(--shadow-accent); /* Усилена акцентная тень */
+            background: linear-gradient(to bottom, var(--color-bg-secondary), var(--color-bg-tertiary));
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        
+        .gradient-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, 
+                #ff0000, #ff7700, #ffdd00, #00ff00, 
+                #0000ff, #ff00ff, #ff0000);
+            background-size: 400% 400%;
+            animation: gradient 6s linear infinite;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 400% 50%; }
+        }
+        
+        h1 {
+            color: #fff;
+            margin-top: 10px;
+            font-size: 1.8em;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.4), 0 0 15px rgba(100, 100, 255, 0.2); /* Усилено свечение */
+        }
+        
+        .username {
+            color: var(--color-text-secondary); /* Улучшен контраст */
+        }
+
+        .link {
+            color: var(--color-link-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .link:hover {
+            color: var(--color-link-hover);
+            text-shadow: 0 0 5px rgba(100, 180, 255, 0.5); /* Добавлено свечение при наведении */
+        }
+        
+        .tag {
+            display: inline-block;
+            background: var(--color-tag-bg);
+            color: var(--color-text-secondary);
+            padding: 3px 10px;
+            border-radius: 4px;
+            margin-right: 6px;
+            margin-bottom: 6px;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            border: 1px solid var(--color-border);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Добавлена тень */
+        }
+        
+        .tag:hover {
+            background: var(--color-tag-hover);
+            transform: translateY(-2px) scale(1.02); /* Смещение вверх и легкое масштабирование */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), 0 0 10px var(--shadow-accent); /* Усилена тень и добавлено свечение */
+        }
+        
+        .divider {
+            text-align: center;
+            color: var(--color-divider);
+            margin: 20px 0;
+            letter-spacing: 5px;
+            position: relative;
+        }
+        
+        .divider::before, .divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 30%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--color-divider), transparent);
+        }
+        
+        .divider::before {
+            left: 0;
+        }
+        
+        .divider::after {
+            right: 0;
+        }
+
+        .section-title {
+            color: var(--color-link-primary); /* Выделяем заголовки разделов */
+            font-size: 1.1em;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px; /* Отступ между иконкой и текстом */
+            text-shadow: 0 0 5px rgba(100, 180, 255, 0.3);
+        }
+        
+        /* Простой плеер */
+        .simple-player {
+            background: linear-gradient(to bottom, var(--color-bg-secondary), var(--color-bg-tertiary));
+            border: 1px solid var(--color-border);
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 20px;
+            text-align: center;
+            box-shadow: 0 0 25px var(--shadow-primary),
+                        0 0 15px var(--shadow-accent);
+        }
+        
+        .play-btn {
+            background: var(--color-tag-bg);
+            border: none;
+            color: var(--color-link-primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 auto;
+            display: block;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .play-btn:hover {
+            background: var(--color-tag-hover);
+            color: var(--color-link-hover);
+            transform: scale(1.1); /* Эффект пульсации */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), 0 0 12px var(--shadow-accent);
+        }
+
+        /* Адаптивность для маленьких экранов */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .bio-container, .simple-player {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+            .section-title {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bio-container">
+        <div class="gradient-bg"></div>
+        
+        <h1>How? | BIO</h1>
+        <div class="username">@iHOWi | <a href="https://t.me/iHOWi" class="link"><i class="fab fa-telegram-plane"></i> Telegram</a></div>
+        
+        <div class="divider">•••</div>
+        
+        <div class="section">
+            <div class="section-title"><i class="fas fa-microchip"></i> VOID ENGINE</div>
+            <a href="https://t.me/VOID_MOD" class="link">@VOID_MOD</a>
+        </div>
+        
+        <div class="divider">•••</div>
+        
+        <div class="section">
+            <div class="section-title"><i class="fas fa-users"></i> FRIENDS</div>
+            <div>
+                <a href="https://t.me/MihailSecuritu" class="link"><i class="fas fa-gem"></i> @MihailSecuritu</a><br>
+                <a href="https://t.me/ImGui_Moder" class="link"><i class="fas fa-code"></i> @ImGui_Moder</a><br>
+                <a href="https://t.me/LukaDed" class="link"><i class="fas fa-user-secret"></i> @LukaDed</a><br>
+                <a href="https://t.me/Im_you_strax" class="link"><i class="fas fa-mask"></i> @Im_you_strax</a><br>
+                <a href="https://t.me/froskya_2OO4" class="link"><i class="fas fa-heart"></i> @froskya_2OO4</a><br>
+                <a href="https://t.me/Lorenzo_cheat" class="link"><i class="fas fa-crosshairs"></i> @Lorenzo_cheat</a><br>
+                <a href="https://t.me/IKONAweb" class="link"><i class="fas fa-globe"></i> @IKONAweb</a><br>
+                <a href="https://t.me/Mental_disorder_illustration" class="link"><i class="fas fa-paint-brush"></i> @Mental_disorder_illustration</a>
+            </div>
+        </div>
+        
+        <div class="divider">•••</div>
+        
+        <div class="section">
+            <div class="section-title"><i class="fas fa-brain"></i> HOBBY</div>
+            <div>
+                <span class="tag">#modmaking</span>
+                <span class="tag">#sell</span>
+                <span class="tag">#FLstudio</span>
+                <span class="tag">#LowCoder</span>
+            </div>
+        </div>
+        
+        <div class="divider">•••</div>
+        
+        <div class="section">
+            <div class="section-title"><i class="fas fa-flag"></i> Clans</div>
+            <div>
+                <span class="tag" style="color: #ffeb3b;">#𝐙𝐞𝐂𝐎𝐃𝐄</span>
+                <span class="tag">#EY</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="simple-player">
+        <h3><i class="fas fa-music"></i> Internet Love</h3>
+        <button class="play-btn" id="play-btn">▶</button>
+        <audio id="audio-player" preload="none">
+            <source src="https://dl1.mp3party.net/download/11158752">
+            Ваш браузер не поддерживает аудио элемент.
+        </audio>
+    </div>
+
+    <script>
+        // Простое управление плеером
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audio-player');
+            const playBtn = document.getElementById('play-btn');
+            
+            playBtn.addEventListener('click', function() {
+                if (audio.paused) {
+                    audio.play();
+                    playBtn.textContent = '❚❚'; // Изменено на более распространенный символ паузы
+                } else {
+                    audio.pause();
+                    playBtn.textContent = '▶';
+                }
+            });
+            
+            // Обновляем кнопку при окончании трека
+            audio.addEventListener('ended', function() {
+                playBtn.textContent = '▶';
+            });
+        });
+    </script>
+</body>
+</html>
