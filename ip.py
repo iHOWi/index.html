@@ -116,7 +116,7 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     elif query.data == 'referrals':
         ref_link = f"https://t.me/{(await context.bot.get_me()).username}?start={query.from_user.id}"
         await query.edit_message_text(
-            f"📊 Ваши рефералы: {len(users_db[query.from_user.id]['referrals']}\n"
+            f"📊 Ваши рефералы: {len(users_db[query.from_user.id]['referrals'])}\n"  # <- Закрывающая скобка для len()
             f"🔗 Ваша ссылка:\n{ref_link}",
             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🔙 Назад", callback_data='back')]])
         )
