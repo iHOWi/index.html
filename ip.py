@@ -19,7 +19,7 @@ import threading
 TOKEN = os.getenv("TOKEN", "8009426826:AAHgd0hmxREuMxSnm2HDkyyF62CIRVRtrlk")
 CHANNEL_ID = os.getenv("CHANNEL_ID", "@ip_searcher")
 PORT = int(os.getenv("PORT", 10000))
-WEBHOOK_URL = os.getenv("WEBHOOK_URL", "https://ipsearchur-ru.onrender.com/8009426826:AAHgd0hmxREuMxSnm2HDkyyF62CIRVRtrlk")
+WEBHOOK_URL = os.getenv("WEBHOOK_URL", "https://index-html-daev.onrender.com/8009426826:AAHgd0hmxREuMxSnm2HDkyyF62CIRVRtrlk")
 
 # База данных
 users_db = {}
